@@ -116,7 +116,7 @@ def load_model():
 # ─────────────────────────────────────────────
 with st.sidebar:
     # st.image(os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"), use_container_width=True)
-    col_logo1, col_logo2 = st.columns(1,1)
+    col_logo1, col_logo2 = st.columns([1,1])
     with col_logo1:
         st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"),  width=150)
     with col_logo2:
