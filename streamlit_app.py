@@ -210,15 +210,13 @@ with tab1:
 
     col_btn1, col_btn2 = st.columns([3, 1])
     with col_btn1:
-        clasificar = st.button("🔍 Clasificar", type="primary", use_container_width=True, key="btn_individual")
+        clasificar = st.button("🔍 Clasificar el texto", type="primary", use_container_width=True, key="btn_individual")
     with col_btn2:
-        if st.button("🗑️ Limpiar", use_container_width=True, key="btn_limpiar1"):
+        if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
             st.session_state["texto"] = ""
             st.rerun()
 
     if clasificar:
-
-    if st.button("🔍 Clasificar", type="primary", use_container_width=True):
         if not user_text.strip():
             st.warning("⚠️ Por favor ingresa un texto antes de clasificar")
         else:
@@ -271,15 +269,13 @@ with tab2:
 
     col_btn3, col_btn4 = st.columns([3, 1])
     with col_btn3:
-        clasificar_lote = st.button("🔍 Clasificar todos", type="primary", use_container_width=True, key="btn_lote")
+        clasificar_lote = st.button("🔍 Clasificar los textos", type="primary", use_container_width=True, key="btn_lote")
     with col_btn4:
-        if st.button("🗑️ Limpiar", use_container_width=True, key="btn_limpiar2"):
+        if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar2"):
             st.session_state["batch"] = ""
             st.rerun()
 
     if clasificar_lote:
-
-    if st.button("🔍 Clasificar los textos", type="primary", use_container_width=True):
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
         if not lines:
             st.warning("⚠️ Por favor ingresa al menos un texto")
