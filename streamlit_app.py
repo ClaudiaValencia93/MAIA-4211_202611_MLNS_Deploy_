@@ -160,7 +160,7 @@ except FileNotFoundError as e:
 # ─────────────────────────────────────────────
 # Tabs: predicción individual y por lote
 # ─────────────────────────────────────────────
-tab1, tab2 = st.tabs(["📝 Texto Individual", "📋 Clasificación por Lote"])
+tab1, tab2 = st.tabs(["📝 Texto individual", "📋 Clasificación por lote"])
 
 # ── TAB 1: Predicción individual ──────────────
 with tab1:
@@ -187,7 +187,7 @@ with tab1:
 
     if st.button("🔍 Clasificar", type="primary", use_container_width=True):
         if not user_text.strip():
-            st.warning("⚠️ Por favor ingresa un texto antes de clasificar.")
+            st.warning("⚠️ Por favor ingresa un texto antes de clasificar")
         else:
             with st.spinner("Clasificando..."):
                 result = controller.predict(user_text)
@@ -269,7 +269,7 @@ with tab2:
 st.markdown("---")
 st.markdown(
     "<div style='text-align:center; color:gray; font-size:0.85em;'>"
-    "Clasificador de ODS · Curso MAIA · Modelo: Regresión Logística + TF-IDF · F1-Score: 85.83%"
+    "Clasificador de ODS · Curso MLNS MAIA · Modelo: Regresión Logística + TF-IDF · F1-Score: 85.83%"
     "</div>",
     unsafe_allow_html=True,
 )
