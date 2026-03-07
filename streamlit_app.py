@@ -202,11 +202,22 @@ with tab1:
         st.session_state.user_input = ""
     if "input_key" not in st.session_state:
         st.session_state.input_key = 0
+    if "last_example" not in st.session_state:
+        st.session_state.last_example = "Selecciona un ejemplo..."
 
-    selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
+    def on_example_change():
+        sel = st.session_state["selectbox_ejemplo"]
+        if sel != "Selecciona un ejemplo...":
+            st.session_state.user_input = sel
+            st.session_state.input_key += 1
+        st.session_state.last_example = sel
 
-    if selected_example != "Selecciona un ejemplo...":
-        st.session_state.user_input = selected_example
+    st.selectbox(
+        "💡 Elige un texto de ejemplo:",
+        example_texts,
+        key="selectbox_ejemplo",
+        on_change=on_example_change
+    )
 
     user_text = st.text_area(
         "✍️ O escribe y/o pega tu texto aquí:",
