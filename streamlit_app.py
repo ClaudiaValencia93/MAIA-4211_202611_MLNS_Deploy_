@@ -59,15 +59,24 @@ st.markdown("""
             background-color: #0078B4 !important;
         }
 
-        /* Borde del selectbox al hacer hover y focus */
-        .stSelectbox > div > div:focus,
-        .stSelectbox > div > div:hover {
+        /* Todos los inputs, selectbox y textarea - quitar rojo */
+        div[data-baseweb="select"] > div:focus-within,
+        div[data-baseweb="select"] > div:hover,
+        div[data-baseweb="base-input"]:focus-within,
+        div[data-baseweb="base-input"]:hover,
+        div[data-baseweb="textarea"]:focus-within,
+        div[data-baseweb="textarea"]:hover,
+        .stTextArea textarea:focus,
+        .stTextInput input:focus {
             border-color: #0078B4 !important;
+            outline-color: #0078B4 !important;
+            box-shadow: 0 0 0 1px #0078B4 !important;
         }
 
-        /* Borde del textarea al hacer hover y focus */
-        .stTextArea > div > div:focus-within {
-            border-color: #0078B4 !important;
+        /* Dropdown items hover */
+        li[role="option"]:hover {
+            background-color: #0078B4 !important;
+            color: white !important;
         }
 
         /* Botón primario */
