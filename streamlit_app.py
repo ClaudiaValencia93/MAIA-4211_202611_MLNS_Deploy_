@@ -136,7 +136,10 @@ with tab1:
                 with col1:
                     st.markdown("### 🎯 Resultado")
                     ods_img = ods_info.get("img", "")
-                    st.image(ods_img, width=250)
+                    st.markdown(
+                        f'<img src="{ods_img}" width="250" style="border-radius:12px;">',
+                        unsafe_allow_html=True,
+                    )
 
             with col2:
                 st.markdown("### 📊 Top 5 Probabilidades")
