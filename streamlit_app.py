@@ -147,7 +147,7 @@ with col_centro:
             font-family: 'Arial Black', sans-serif;
             margin-top: 10px;
         ">
-            Clasificador de Textos 
+            Clasificador de Textos
         </div>
         """,
         unsafe_allow_html=True,
