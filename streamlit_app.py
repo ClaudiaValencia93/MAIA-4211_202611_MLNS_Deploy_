@@ -128,7 +128,28 @@ with st.sidebar:
 # ─────────────────────────────────────────────
 col_izq, col_centro, col_der = st.columns([1, 2, 1])
 with col_centro:
+     st.markdown(
+        """
+        <div style="margin-top: -60px;">
+        """,
+        unsafe_allow_html=True,
+    )
     st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), use_container_width=True)
+     st.markdown(
+        """
+        <div style="
+            text-align: center;
+            color: #0078B4;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: -10px;
+        ">
+            Clasificador de Textos 
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 st.markdown("---")
 st.markdown("Ingresa un texto relacionado con los Objetivos de Desarrollo Sostenible y el modelo predecirá a cuál ODS pertenece")
@@ -221,7 +242,9 @@ with tab1:
                 )
                 fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
                 fig.update_layout(showlegend=False, height=300)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d", 
+                "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]
+                })
 
 # ── TAB 2: Clasificación por lote ─────────────
 with tab2:
