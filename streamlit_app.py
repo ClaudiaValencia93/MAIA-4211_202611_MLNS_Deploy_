@@ -201,8 +201,13 @@ with tab1:
     if "borrado" not in st.session_state:
         st.session_state.borrado = False
 
-    valor_inicial = "" if st.session_state.borrado else default_text
-    st.session_state.borrado = False
+    if st.session_state.borrado:
+        valor_inicial = ""
+        st.session_state.borrado = False
+    elif selected_example != "Selecciona un ejemplo...":
+        valor_inicial = default_text
+    else:
+        valor_inicial = ""
 
     user_text = st.text_area(
         "✍️ O escribe y/o pega tu texto aquí:",
