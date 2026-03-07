@@ -93,7 +93,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────
-# Carga del modelo (cacheado para eficiencia)
+# Carga del modelo cacheado para eficiencia
 # ─────────────────────────────────────────────
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "resources", "model.joblib")
 
@@ -130,7 +130,7 @@ col_izq, col_centro, col_der = st.columns([1, 2, 1])
 with col_centro:
      st.markdown(
         """
-        <div style="margin-top: -60px;">
+        <div style="margin-top: -100px;">
         """,
         unsafe_allow_html=True,
     )
@@ -139,11 +139,13 @@ with col_centro:
         """
         <div style="
             text-align: center;
-            color: #0078B4;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-top: -10px;
+            color: #009EDB;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Arial Black', sans-serif;
+            margin-top: 10px;
         ">
             Clasificador de Textos 
         </div>
