@@ -198,9 +198,15 @@ with tab1:
     selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
     default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
 
+    if "borrado" not in st.session_state:
+        st.session_state.borrado = False
+
+    valor_inicial = "" if st.session_state.borrado else default_text
+    st.session_state.borrado = False
+
     user_text = st.text_area(
         "✍️ O escribe y/o pega tu texto aquí:",
-        value=default_text,
+        value=valor_inicial,
         height=150,
         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
     )
@@ -209,18 +215,17 @@ with tab1:
     with col_btn1:
         clasificar = st.button("🔍 Clasificar el texto", type="primary", use_container_width=True, key="btn_individual")
     with col_btn2:
-        borrar = st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1")
-
-    if borrar:
-        st.rerun()
+        if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
+            st.session_state.borrado = True
+            st.rerun()
 
     if clasificar:
         if not user_text.strip():
-            st.warning("⚠️ Por favor ingresa un texto antes de clasificar.")
+            st.warning("⚠️ Por favor ingresa un texto antes de clasificar")
         else:
             palabras_validas = [w for w in user_text.strip().split() if w.isalpha() and len(w) > 3]
             if len(palabras_validas) < 5:
-                st.warning("⚠️ Por favor ingresa un texto válido para clasificar.")
+                st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
             else:
                 with st.spinner("Clasificando..."):
                     result = controller.predict(user_text)
