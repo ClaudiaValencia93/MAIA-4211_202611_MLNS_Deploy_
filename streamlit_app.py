@@ -119,11 +119,11 @@ with st.sidebar:
     st.markdown("## Clasificador de texto de los ODS")
     st.markdown(
         "En 2015, la ONU aprobó la Agenda 2030 con **17 Objetivos de Desarrollo Sostenible (ODS)** para mejorar la vida"
-        "de todas las personas sin dejar a nadie atrás, abordando desafíos como la pobreza, la educación," 
-        "la salud, el empleo y el cambio climático. Esta aplicación utiliza un modelo de Machine Learning"
-        "basado en Regresión Logística y TF-IDF para clasificar automáticamente textos según el ODS al que" 
-        "pertenecen, contribuyendo a visibilizar y conectar el conocimiento con los objetivos globales" 
-        "de desarrollo sostenible"
+        " de todas las personas sin dejar a nadie atrás, abordando desafíos como la pobreza, la educación," 
+        " la salud, el empleo y el cambio climático. Esta aplicación utiliza un modelo de Machine Learning"
+        " basado en Regresión Logística y TF-IDF para clasificar automáticamente textos según el ODS al que" 
+        " pertenecen, contribuyendo a visibilizar y conectar el conocimiento con los objetivos globales" 
+        " de desarrollo sostenible"
     )
     st.markdown("---")
     st.markdown("**Modelo:** Regresión Logística + TF-IDF")
