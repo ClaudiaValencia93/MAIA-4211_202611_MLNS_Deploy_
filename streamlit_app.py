@@ -132,6 +132,8 @@ with st.sidebar:
     st.markdown("**Autores:**")
     st.markdown("Claudia Valencia Morales")
     st.markdown("Sandro Fabián Castro")
+    st.markdown("---")
+    st.markdown("Maestría en Inteligencia Artificial")
 
 # ─────────────────────────────────────────────
 # Título principal
