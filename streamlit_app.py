@@ -134,7 +134,7 @@ with col_centro:
         """,
         unsafe_allow_html=True,
     )
-    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), use_container_width=True)
+     st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), use_container_width=True)
      st.markdown(
         """
         <div style="
