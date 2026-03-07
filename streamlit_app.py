@@ -282,7 +282,7 @@ with tab2:
     with col_btn4:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar2"):
            del st.session_state["batch"]
-               st.rerun()
+           st.rerun()
 
     if clasificar_lote:
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
