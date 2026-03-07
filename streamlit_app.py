@@ -106,7 +106,7 @@ def load_model():
 # ─────────────────────────────────────────────
 with st.sidebar:
     st.image(os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"), use_container_width=True)
-    st.markdown("## Clasificador de ODS")
+    st.markdown("## Clasificador de texto de los ODS")
     st.markdown(
         "En 2015, la ONU aprobó la Agenda 2030 con **17 Objetivos de Desarrollo Sostenible (ODS)** para mejorar la vida"
         "de todas las personas sin dejar a nadie atrás, abordando desafíos como la pobreza, la educación," 
@@ -408,7 +408,7 @@ with tab2:
 st.markdown("---")
 st.markdown(
     "<div style='text-align:center; color:gray; font-size:0.85em;'>"
-    "Clasificador de ODS · Curso MLNS MAIA · Modelo: Regresión Logística + TF-IDF · F1-Score: 85.83%"
+    "Clasificador de textos de los ODS · Curso MLNS MAIA - Uniandes· Modelo: Regresión Logística + TF-IDF · F1-Score: 85.83%"
     "</div>",
     unsafe_allow_html=True,
 )
