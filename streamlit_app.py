@@ -225,9 +225,9 @@ with tab1:
             palabras_validas = [w for w in user_text.strip().split() if w.isalpha() and len(w) > 3]
             if len(palabras_validas) < 5:
                 st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
-        else:
-            with st.spinner("Clasificando..."):
-                result = controller.predict(user_text)
+            else:
+                with st.spinner("Clasificando..."):
+                    result = controller.predict(user_text)
 
             ods_num = result['ods_number']
             ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "icon": "🌍"})
