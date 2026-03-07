@@ -116,20 +116,12 @@ def load_model():
 # ─────────────────────────────────────────────
 with st.sidebar:
     # st.image(os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"), use_container_width=True)
-    # col_logo1, col_logo2 = st.columns(2)
-    # with col_logo1:
-    #     st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), width=2000)
-    # with col_logo2:
-    #     st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=120)
-    st.markdown(
-    f"""
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
-        <img src="app/static/logo_ods.png" style="height:60px; object-fit:contain;">
-        <img src="app/static/logo_uniandes.png" style="height:60px; object-fit:contain;">
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+    col_logo1, col_logo2 = st.columns(1,1)
+    with col_logo1:
+        st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"),  width=150)
+    with col_logo2:
+        st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"),  use_container_width=True)
+   
     st.markdown("## Clasificador de texto de los ODS")
     st.markdown(
         "En 2015, la ONU aprobó la Agenda 2030 con **17 Objetivos de Desarrollo Sostenible (ODS)** para mejorar la vida"
