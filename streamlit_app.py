@@ -81,14 +81,28 @@ with col_centro:
     st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), use_container_width=True)
 
 st.markdown("---")
-st.markdown("Ingresa un texto relacionado con los Objetivos de Desarrollo Sostenible y el modelo predecirá a cuál ODS pertenece.")
+st.markdown("Ingresa un texto relacionado con los Objetivos de Desarrollo Sostenible y el modelo predecirá a cuál ODS pertenece")
 
 # ─────────────────────────────────────────────
 # Cargar modelo
 # ─────────────────────────────────────────────
 try:
     controller = load_model()
-    st.success("✅ Modelo cargado correctamente.")
+    st.markdown(
+        """
+        <div style="
+            background-color: #009EDB;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        ">
+            ✅ Modelo cargado correctamente
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 except FileNotFoundError as e:
     st.error(f"❌ {e}")
     st.stop()
