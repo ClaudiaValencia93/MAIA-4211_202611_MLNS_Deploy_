@@ -202,10 +202,21 @@ with tab1:
     default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
     user_text = st.text_area(
         "✍️ O escribe y/o pega tu texto aquí:",
-        value=default_text,
+        value=st.session_state.get("texto", default_text),
         height=150,
+        key="texto",
         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
     )
+
+    col_btn1, col_btn2 = st.columns([3, 1])
+    with col_btn1:
+        clasificar = st.button("🔍 Clasificar", type="primary", use_container_width=True, key="btn_individual")
+    with col_btn2:
+        if st.button("🗑️ Limpiar", use_container_width=True, key="btn_limpiar1"):
+            st.session_state["texto"] = ""
+            st.rerun()
+
+    if clasificar:
 
     if st.button("🔍 Clasificar", type="primary", use_container_width=True):
         if not user_text.strip():
@@ -226,7 +237,7 @@ with tab1:
                    st.image(ods_img, width=250)
 
             with col2:
-                st.markdown("### 📊 Top 5 Probabilidades")
+                st.markdown("### 📊 Top 5 de probabilidades")
                 probs = result["probabilities"]
                 top5 = sorted(probs.items(), key=lambda x: x[1], reverse=True)[:5]
                 df_probs = pd.DataFrame(top5, columns=["ODS", "Probabilidad"])
@@ -252,11 +263,21 @@ with tab2:
     st.subheader("Clasificar múltiples textos")
     st.markdown("Pega un texto por línea. El modelo clasificará cada uno de forma independiente.")
 
-    batch_input = st.text_area(
-        "📋 Textos (uno por línea):",
+    batch_input = st.text_area("📋 Textos (uno por línea):",
         height=200,
+        key="batch",
         placeholder="Texto 1\nTexto 2\nTexto 3\n...",
     )
+
+    col_btn3, col_btn4 = st.columns([3, 1])
+    with col_btn3:
+        clasificar_lote = st.button("🔍 Clasificar todos", type="primary", use_container_width=True, key="btn_lote")
+    with col_btn4:
+        if st.button("🗑️ Limpiar", use_container_width=True, key="btn_limpiar2"):
+            st.session_state["batch"] = ""
+            st.rerun()
+
+    if clasificar_lote:
 
     if st.button("🔍 Clasificar los textos", type="primary", use_container_width=True):
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
