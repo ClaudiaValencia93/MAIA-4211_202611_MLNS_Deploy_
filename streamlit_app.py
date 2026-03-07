@@ -289,15 +289,14 @@ with tab2:
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
         if not lines:
             st.warning("⚠️ Por favor ingresa al menos un texto antes de clasificar")
-         else:
+        else:
             lines_validas = [l for l in lines if len([w for w in l.split() if w.isalpha() and len(w) > 3]) >= 5]
             if not lines_validas:
                 st.warning("⚠️ Por favor ingresa textos válidos para clasificar")
             else:
                 lines = lines_validas
-        else:
-            with st.spinner(f"Clasificando {len(lines)} textos..."):
-                results = controller.predict_batch(lines)
+                with st.spinner(f"Clasificando {len(lines)} textos..."):
+                    results = controller.predict_batch(lines)
 
             df_results = pd.DataFrame([
                 {
