@@ -143,7 +143,6 @@ with col_centro:
             font-size: 1.5rem;
             font-weight: 900;
             letter-spacing: 3px;
-            text-transform: uppercase;
             font-family: 'Arial Black', sans-serif;
             margin-top: 10px;
         ">
