@@ -76,6 +76,7 @@ with st.sidebar:
 # ─────────────────────────────────────────────
 # Título principal
 # ─────────────────────────────────────────────
+st.image("logo_ods.png", width=500)
 st.title("Clasificador de Textos por ODS")
 st.markdown(
     "Ingresa un texto relacionado con los Objetivos de Desarrollo Sostenible y el modelo "
