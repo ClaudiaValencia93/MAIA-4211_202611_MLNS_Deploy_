@@ -256,24 +256,24 @@ with tab1:
         #     palabras_validas = [w for w in user_text.strip().split() if w.isalpha() and len(w) > 3]
         #     if len(palabras_validas) < 5:
         #         st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
-            else:
-                with st.spinner("Clasificando..."):
+        else:
+             with st.spinner("Clasificando..."):
                     result = controller.predict(user_text)
-                ods_num = result['ods_number']
-                ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "img": ""})
-                col1, col2 = st.columns([1, 2])
-                with col1:
-                    st.markdown("### 🎯 Resultado del ODS")
-                    ods_img = ods_info.get("img", "")
-                    st.image(ods_img, width=250)
-                with col2:
-                    st.markdown("### 📊 Top 5 de probabilidades")
-                    probs = result["probabilities"]
-                    top5 = sorted(probs.items(), key=lambda x: x[1], reverse=True)[:5]
-                    df_probs = pd.DataFrame(top5, columns=["ODS", "Probabilidad"])
-                    df_probs["ODS"] = df_probs["ODS"].apply(lambda x: f"ODS {x}")
-                    df_probs["Probabilidad (%)"] = (df_probs["Probabilidad"] * 100).round(2)
-                    fig = px.bar(
+            ods_num = result['ods_number']
+            ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "img": ""})
+            col1, col2 = st.columns([1, 2])
+            with col1:
+                st.markdown("### 🎯 Resultado del ODS")
+                ods_img = ods_info.get("img", "")
+                st.image(ods_img, width=250)
+            with col2:
+                st.markdown("### 📊 Top 5 de probabilidades")
+                probs = result["probabilities"]
+                top5 = sorted(probs.items(), key=lambda x: x[1], reverse=True)[:5]
+                df_probs = pd.DataFrame(top5, columns=["ODS", "Probabilidad"])
+                df_probs["ODS"] = df_probs["ODS"].apply(lambda x: f"ODS {x}")
+                df_probs["Probabilidad (%)"] = (df_probs["Probabilidad"] * 100).round(2)
+                fig = px.bar(
                         df_probs,
                         x="ODS",
                         y="Probabilidad (%)",
@@ -281,9 +281,9 @@ with tab1:
                         color_continuous_scale="Blues",
                         text="Probabilidad (%)",
                     )
-                    fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
-                    fig.update_layout(showlegend=False, height=300)
-                    st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d",
+                fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
+                fig.update_layout(showlegend=False, height=300)
+                st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d",
                     "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]})
 
 # with tab1:
