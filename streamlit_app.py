@@ -198,25 +198,17 @@ with tab1:
     if "selected_example_key" not in st.session_state:
         st.session_state.selected_example_key = 0
 
-    selected_example = st.selectbox(
-        "💡 Elige un texto de ejemplo:",
-        example_texts,
-        key=f"selectbox_{st.session_state.selected_example_key}"
-    )
+    if "user_input" not in st.session_state:
+        st.session_state.user_input = ""
 
-    default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
+    selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
 
-    if st.session_state.borrado:
-        valor_inicial = ""
-        st.session_state.borrado = False
-    elif selected_example != "Selecciona un ejemplo...":
-        valor_inicial = default_text
-    else:
-        valor_inicial = ""
+    if selected_example != "Selecciona un ejemplo...":
+        st.session_state.user_input = selected_example
 
     user_text = st.text_area(
         "✍️ O escribe y/o pega tu texto aquí:",
-        value=valor_inicial,
+        value=st.session_state.user_input,
         height=150,
         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
     )
@@ -226,8 +218,7 @@ with tab1:
         clasificar = st.button("🔍 Clasificar el texto", type="primary", use_container_width=True, key="btn_individual")
     with col_btn2:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
-            st.session_state.borrado = True
-            st.session_state.selected_example_key += 1
+            st.session_state.user_input = ""
             st.rerun()
 
     if clasificar:
