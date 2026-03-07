@@ -115,7 +115,10 @@ def load_model():
 # Sidebar
 # ─────────────────────────────────────────────
 with st.sidebar:
-    st.image(os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"), width=150)
+    # st.image(os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"), width=150)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image(os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"), use_container_width=True)
     st.markdown("## Clasificador de texto de los ODS")
     st.markdown(
         "En 2015, la ONU aprobó la Agenda 2030 con **17 Objetivos de Desarrollo Sostenible (ODS)** para mejorar la vida"
