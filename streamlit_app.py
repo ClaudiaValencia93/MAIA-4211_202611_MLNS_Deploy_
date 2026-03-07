@@ -60,18 +60,22 @@ def load_model():
 with st.sidebar:
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Sustainable_Development_Goals.jpg/640px-Sustainable_Development_Goals.jpg",
              use_container_width=True)
-    st.markdown("## 🌍 Clasificador de ODS")
+    st.markdown("##Clasificador de ODS")
     st.markdown(
-        "Esta aplicación clasifica textos según los **17 Objetivos de Desarrollo Sostenible (ODS)** "
-        "de la Agenda 2030 de la ONU, usando un modelo de Machine Learning entrenado con "
-        "Regresión Logística y TF-IDF."
+        "En 2015, la ONU aprobó la Agenda 2030 con **17 Objetivos de Desarrollo Sostenible (ODS)** para mejorar la vida"
+        "de todas las personas sin dejar a nadie atrás, abordando desafíos como la pobreza, la educación," 
+        "la salud, el empleo y el cambio climático. Esta aplicación utiliza un modelo de Machine Learning"
+        "basado en Regresión Logística y TF-IDF para clasificar automáticamente textos según el ODS al que" 
+        "pertenecen, contribuyendo a visibilizar y conectar el conocimiento con los objetivos globales" 
+        "de desarrollo sostenible"
     )
     st.markdown("---")
-    st.markdown("**Modelo:** Regresión Logística + TF-IDF + TruncatedSVD")
-    st.markdown("**F1-Score (test):** 85.83%")
+    st.markdown("**Modelo:** Regresión Logística + TF-IDF")
+    st.markdown("**Métrica F1-Score:** 85.83%")
     st.markdown("---")
-    st.markdown("**Integrantes del equipo:**")
-    st.markdown("*(Agrega aquí los nombres)*")
+    st.markdown("**Autores:**")
+    st.markdown("*Claudia Valencia Morales*")
+    st.markdown("*Sandro Fabián Castro*")
 
 # ─────────────────────────────────────────────
 # Título principal
@@ -149,7 +153,7 @@ with tab1:
 
             with col1:
                 with col1:
-                   st.markdown("### 🎯 Resultado")
+                   st.markdown("### 🎯 Resultado ODS")
                    ods_img = ods_info.get("img", "")
                    st.image(ods_img, width=250)
 
@@ -184,10 +188,10 @@ with tab2:
         placeholder="Texto 1\nTexto 2\nTexto 3\n...",
     )
 
-    if st.button("🔍 Clasificar todos", type="primary", use_container_width=True):
+    if st.button("🔍 Clasificar", type="primary", use_container_width=True):
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
         if not lines:
-            st.warning("⚠️ Por favor ingresa al menos un texto.")
+            st.warning("⚠️ Por favor ingresa al menos un texto")
         else:
             with st.spinner(f"Clasificando {len(lines)} textos..."):
                 results = controller.predict_batch(lines)
@@ -202,7 +206,7 @@ with tab2:
                 for text, r in zip(lines, results)
             ])
 
-            st.success(f"✅ {len(df_results)} textos clasificados.")
+            st.success(f"✔️ {len(df_results)} textos clasificados")
             st.dataframe(df_results, use_container_width=True)
 
             csv = df_results.to_csv(index=False).encode("utf-8")
