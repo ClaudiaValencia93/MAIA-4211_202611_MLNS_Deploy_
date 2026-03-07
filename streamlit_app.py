@@ -284,7 +284,7 @@ with tab2:
            del st.session_state["batch"]
            st.rerun()
 
-       if clasificar_lote:
+     if clasificar_lote:
             lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
             if not lines:
                 st.warning("⚠️ Por favor ingresa al menos un texto antes de clasificar")
@@ -312,7 +312,7 @@ with tab2:
                         data=csv,
                         file_name="clasificacion_ods.csv",
                         mime="text/csv",
-                    )
+                    )  
 
 # ─────────────────────────────────────────────
 # Footer
