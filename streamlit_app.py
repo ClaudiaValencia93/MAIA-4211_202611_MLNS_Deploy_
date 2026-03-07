@@ -281,7 +281,7 @@ with tab2:
         clasificar_lote = st.button("🔍 Clasificar los textos", type="primary", use_container_width=True, key="btn_lote")
     with col_btn4:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar2"):
-           del st.session_state.batch = "batch"
+           del st.session_state["batch"]
             st.rerun()
 
     if clasificar_lote:
