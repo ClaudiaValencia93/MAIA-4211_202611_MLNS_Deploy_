@@ -258,7 +258,7 @@ with tab1:
         #         st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
         else:
              with st.spinner("Clasificando..."):
-                    result = controller.predict(user_text)
+                result = controller.predict(user_text)
             ods_num = result['ods_number']
             ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "img": ""})
             col1, col2 = st.columns([1, 2])
