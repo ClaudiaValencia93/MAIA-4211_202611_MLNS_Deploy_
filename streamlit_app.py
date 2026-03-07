@@ -91,14 +91,14 @@ try:
     st.markdown(
         """
         <div style="
-            background-color: #009EDB;
+            background-color: #3bb3db;
             color: white;
             padding: 12px 20px;
             border-radius: 8px;
             font-weight: 600;
             font-size: 0.95rem;
         ">
-            ✅ Modelo cargado correctamente
+            ✔️ Modelo cargado correctamente
         </div>
         """,
         unsafe_allow_html=True,
@@ -118,18 +118,18 @@ with tab1:
 
     example_texts = [
         "Selecciona un ejemplo...",
-        "El acceso a la educación de calidad es fundamental para el desarrollo sostenible de las comunidades.",
-        "Las energías renovables como la solar y la eólica son clave para combatir el cambio climático.",
-        "Es necesario garantizar el acceso al agua potable y al saneamiento básico en zonas rurales.",
-        "La igualdad de género implica garantizar los mismos derechos y oportunidades para hombres y mujeres.",
-        "El crecimiento económico inclusivo debe generar empleo digno y proteger los derechos laborales.",
+        "El acceso a la educación de calidad es fundamental para el desarrollo sostenible de las comunidades",
+        "Las energías renovables como la solar y la eólica son clave para combatir el cambio climático",
+        "Es necesario garantizar el acceso al agua potable y al saneamiento básico en zonas rurales",
+        "La igualdad de género implica garantizar los mismos derechos y oportunidades para hombres y mujeres",
+        "El crecimiento económico inclusivo debe generar empleo digno y proteger los derechos laborales",
     ]
 
-    selected_example = st.selectbox("💡 O elige un texto de ejemplo:", example_texts)
+    selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
 
     default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
     user_text = st.text_area(
-        "✍️ Escribe o pega tu texto aquí:",
+        "✍️ O escribe y/o pega tu texto aquí:",
         value=default_text,
         height=150,
         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
