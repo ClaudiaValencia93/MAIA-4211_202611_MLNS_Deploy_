@@ -45,6 +45,18 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+st.markdown("""
+    <style>
+        .stTabs [data-baseweb="tab"]:hover {
+            color: #0078B4 !important;
+        }
+        .stTabs [data-baseweb="tab"][aria-selected="true"] {
+            color: #0078B4 !important;
+            border-bottom-color: #0078B4 !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # ─────────────────────────────────────────────
 # Carga del modelo (cacheado para eficiencia)
 # ─────────────────────────────────────────────
