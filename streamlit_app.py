@@ -284,7 +284,7 @@ with tab2:
            del st.session_state["batch"]
            st.rerun()
 
-    if clasificar_lote:
+   if clasificar_lote:
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
         if not lines:
             st.warning("⚠️ Por favor ingresa al menos un texto antes de clasificar")
@@ -293,30 +293,26 @@ with tab2:
             if not lines_validas:
                 st.warning("⚠️ Por favor ingresa textos válidos para clasificar")
             else:
-                lines = lines_validas
-                with st.spinner(f"Clasificando {len(lines)} textos..."):
-                    results = controller.predict_batch(lines)
-
+                with st.spinner(f"Clasificando {len(lines_validas)} textos..."):
+                    results = controller.predict_batch(lines_validas)
                 df_results = pd.DataFrame([
-                {
-                    "Texto": text[:100] + "..." if len(text) > 100 else text,
-                    "ODS Predicho": f"ODS {r['ods_number']}",
-                    "Nombre del ODS": r["ods_name"],
-                    "Confianza (%)": round(max(r["probabilities"].values()) * 100, 2),
-                }
-                for text, r in zip(lines, results)
-            ])
-
-            st.success(f"✔️ {len(df_results)} textos clasificados")
-            st.dataframe(df_results, use_container_width=True)
-
-            csv = df_results.to_csv(index=False).encode("utf-8")
-            st.download_button(
-                label="⬇️ Descargar resultados como CSV",
-                data=csv,
-                file_name="clasificacion_ods.csv",
-                mime="text/csv",
-            )
+                    {
+                        "Texto": text[:100] + "..." if len(text) > 100 else text,
+                        "ODS Predicho": f"ODS {r['ods_number']}",
+                        "Nombre del ODS": r["ods_name"],
+                        "Confianza (%)": round(max(r["probabilities"].values()) * 100, 2),
+                    }
+                    for text, r in zip(lines_validas, results)
+                ])
+                st.success(f"✔️ {len(df_results)} textos clasificados.")
+                st.dataframe(df_results, use_container_width=True)
+                csv = df_results.to_csv(index=False).encode("utf-8")
+                st.download_button(
+                    label="⬇️ Descargar resultados como CSV",
+                    data=csv,
+                    file_name="clasificacion_ods.csv",
+                    mime="text/csv",
+                )
 
 # ─────────────────────────────────────────────
 # Footer
