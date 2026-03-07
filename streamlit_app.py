@@ -215,7 +215,7 @@ with tab1:
         clasificar = st.button("🔍 Clasificar el texto", type="primary", use_container_width=True, key="btn_individual")
     with col_btn2:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
-            st.session_state.texto = ""
+            del st.session_state["texto"]
             st.rerun()
 
     if clasificar:
@@ -228,9 +228,8 @@ with tab1:
             else:
                 with st.spinner("Clasificando..."):
                     result = controller.predict(user_text)
-
-            ods_num = result['ods_number']
-            ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "icon": "🌍"})
+                ods_num = result['ods_number']
+                ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "icon": "🌍"})
                                          
             col1, col2 = st.columns([1, 2])
 
@@ -282,7 +281,7 @@ with tab2:
         clasificar_lote = st.button("🔍 Clasificar los textos", type="primary", use_container_width=True, key="btn_lote")
     with col_btn4:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar2"):
-            st.session_state.batch = ""
+           del st.session_state.batch = "batch"
             st.rerun()
 
     if clasificar_lote:
@@ -298,7 +297,7 @@ with tab2:
                 with st.spinner(f"Clasificando {len(lines)} textos..."):
                     results = controller.predict_batch(lines)
 
-            df_results = pd.DataFrame([
+                df_results = pd.DataFrame([
                 {
                     "Texto": text[:100] + "..." if len(text) > 100 else text,
                     "ODS Predicho": f"ODS {r['ods_number']}",
