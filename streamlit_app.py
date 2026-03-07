@@ -187,7 +187,6 @@ tab1, tab2 = st.tabs(["📝 Texto individual", "📋 Clasificación por lote"])
 # ── TAB 1: Predicción individual ──────────────
 with tab1:
     st.subheader("Clasificar un texto")
-
     example_texts = [
         "Selecciona un ejemplo...",
         "El acceso a la educación de calidad es fundamental para el desarrollo sostenible de las comunidades",
@@ -196,17 +195,13 @@ with tab1:
         "La igualdad de género implica garantizar los mismos derechos y oportunidades para hombres y mujeres",
         "El crecimiento económico inclusivo debe generar empleo digno y proteger los derechos laborales",
     ]
-
     selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
-
     default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
-    if "texto" not in st.session_state:
-        st.session_state.texto = default_text
 
     user_text = st.text_area(
         "✍️ O escribe y/o pega tu texto aquí:",
+        value=default_text,
         height=150,
-        key="texto",
         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
     )
 
@@ -214,52 +209,123 @@ with tab1:
     with col_btn1:
         clasificar = st.button("🔍 Clasificar el texto", type="primary", use_container_width=True, key="btn_individual")
     with col_btn2:
-        if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
-            del st.session_state["texto"]
-            st.rerun()
+        borrar = st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1")
+
+    if borrar:
+        st.rerun()
 
     if clasificar:
         if not user_text.strip():
-            st.warning("⚠️ Por favor ingresa un texto antes de clasificar")
+            st.warning("⚠️ Por favor ingresa un texto antes de clasificar.")
         else:
             palabras_validas = [w for w in user_text.strip().split() if w.isalpha() and len(w) > 3]
             if len(palabras_validas) < 5:
-                st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
+                st.warning("⚠️ Por favor ingresa un texto válido para clasificar.")
             else:
                 with st.spinner("Clasificando..."):
                     result = controller.predict(user_text)
                 ods_num = result['ods_number']
-                ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "icon": "🌍"})
-                                         
-            col1, col2 = st.columns([1, 2])
-
-            with col1:
+                ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "img": ""})
+                col1, col2 = st.columns([1, 2])
                 with col1:
-                   st.markdown("### 🎯 Resultado del ODS")
-                   ods_img = ods_info.get("img", "")
-                   st.image(ods_img, width=250)
+                    st.markdown("### 🎯 Resultado del ODS")
+                    ods_img = ods_info.get("img", "")
+                    st.image(ods_img, width=250)
+                with col2:
+                    st.markdown("### 📊 Top 5 de probabilidades")
+                    probs = result["probabilities"]
+                    top5 = sorted(probs.items(), key=lambda x: x[1], reverse=True)[:5]
+                    df_probs = pd.DataFrame(top5, columns=["ODS", "Probabilidad"])
+                    df_probs["ODS"] = df_probs["ODS"].apply(lambda x: f"ODS {x}")
+                    df_probs["Probabilidad (%)"] = (df_probs["Probabilidad"] * 100).round(2)
+                    fig = px.bar(
+                        df_probs,
+                        x="ODS",
+                        y="Probabilidad (%)",
+                        color="Probabilidad (%)",
+                        color_continuous_scale="Blues",
+                        text="Probabilidad (%)",
+                    )
+                    fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
+                    fig.update_layout(showlegend=False, height=300)
+                    st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d",
+                    "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]})
 
-            with col2:
-                st.markdown("### 📊 Top 5 de probabilidades")
-                probs = result["probabilities"]
-                top5 = sorted(probs.items(), key=lambda x: x[1], reverse=True)[:5]
-                df_probs = pd.DataFrame(top5, columns=["ODS", "Probabilidad"])
-                df_probs["ODS"] = df_probs["ODS"].apply(lambda x: f"ODS {x}")
-                df_probs["Probabilidad (%)"] = (df_probs["Probabilidad"] * 100).round(2)
+# with tab1:
+#     st.subheader("Clasificar un texto")
 
-                fig = px.bar(
-                    df_probs,
-                    x="ODS",
-                    y="Probabilidad (%)",
-                    color="Probabilidad (%)",
-                    color_continuous_scale="Blues",
-                    text="Probabilidad (%)",
-                )
-                fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
-                fig.update_layout(showlegend=False, height=300)
-                st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d", 
-                "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]
-                })
+#     example_texts = [
+#         "Selecciona un ejemplo...",
+#         "El acceso a la educación de calidad es fundamental para el desarrollo sostenible de las comunidades",
+#         "Las energías renovables como la solar y la eólica son clave para combatir el cambio climático",
+#         "Es necesario garantizar el acceso al agua potable y al saneamiento básico en zonas rurales",
+#         "La igualdad de género implica garantizar los mismos derechos y oportunidades para hombres y mujeres",
+#         "El crecimiento económico inclusivo debe generar empleo digno y proteger los derechos laborales",
+#     ]
+
+#     selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
+
+#     default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
+#     if "texto" not in st.session_state:
+#         st.session_state.texto = default_text
+
+#     user_text = st.text_area(
+#         "✍️ O escribe y/o pega tu texto aquí:",
+#         height=150,
+#         key="texto",
+#         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
+#     )
+
+#     col_btn1, col_btn2 = st.columns([3, 1])
+#     with col_btn1:
+#         clasificar = st.button("🔍 Clasificar el texto", type="primary", use_container_width=True, key="btn_individual")
+#     with col_btn2:
+#         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
+#             del st.session_state["texto"]
+#             st.rerun()
+
+#     if clasificar:
+#         if not user_text.strip():
+#             st.warning("⚠️ Por favor ingresa un texto antes de clasificar")
+#         else:
+#             palabras_validas = [w for w in user_text.strip().split() if w.isalpha() and len(w) > 3]
+#             if len(palabras_validas) < 5:
+#                 st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
+#             else:
+#                 with st.spinner("Clasificando..."):
+#                     result = controller.predict(user_text)
+#                 ods_num = result['ods_number']
+#                 ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "icon": "🌍"})
+                                         
+#             col1, col2 = st.columns([1, 2])
+
+#             with col1:
+#                 with col1:
+#                    st.markdown("### 🎯 Resultado del ODS")
+#                    ods_img = ods_info.get("img", "")
+#                    st.image(ods_img, width=250)
+
+#             with col2:
+#                 st.markdown("### 📊 Top 5 de probabilidades")
+#                 probs = result["probabilities"]
+#                 top5 = sorted(probs.items(), key=lambda x: x[1], reverse=True)[:5]
+#                 df_probs = pd.DataFrame(top5, columns=["ODS", "Probabilidad"])
+#                 df_probs["ODS"] = df_probs["ODS"].apply(lambda x: f"ODS {x}")
+#                 df_probs["Probabilidad (%)"] = (df_probs["Probabilidad"] * 100).round(2)
+
+#                 fig = px.bar(
+#                     df_probs,
+#                     x="ODS",
+#                     y="Probabilidad (%)",
+#                     color="Probabilidad (%)",
+#                     color_continuous_scale="Blues",
+#                     text="Probabilidad (%)",
+#                 )
+#                 fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
+#                 fig.update_layout(showlegend=False, height=300)
+#                 st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d", 
+#                 "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]
+#                 })
 
 # ── TAB 2: Clasificación por lote ─────────────
 with tab2:
