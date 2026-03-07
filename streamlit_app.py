@@ -76,12 +76,12 @@ with st.sidebar:
 # ─────────────────────────────────────────────
 # Título principal
 # ─────────────────────────────────────────────
-st.image("img/logo_ods.png", width=500)
-st.title("Clasificador de textos por ODS")
-st.markdown(
-    "Ingresa un texto relacionado con los Objetivos de Desarrollo Sostenible y el modelo "
-    "predecirá a cuál ODS pertenece."
-)
+col_izq, col_centro, col_der = st.columns([1, 2, 1])
+with col_centro:
+    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), use_container_width=True)
+
+st.markdown("---")
+st.markdown("Ingresa un texto relacionado con los Objetivos de Desarrollo Sostenible y el modelo predecirá a cuál ODS pertenece.")
 
 # ─────────────────────────────────────────────
 # Cargar modelo
