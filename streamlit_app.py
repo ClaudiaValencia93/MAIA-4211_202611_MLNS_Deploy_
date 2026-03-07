@@ -118,7 +118,7 @@ with st.sidebar:
     # st.image(os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"), use_container_width=True)
     col_logo1, col_logo2 = st.columns(2)
     with col_logo1:
-        st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), width=1000)
+        st.image(os.path.join(os.path.dirname(__file__), "img", "logo_ods.png"), width=2000)
     with col_logo2:
         st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=120)
     st.markdown("## Clasificador de texto de los ODS")
