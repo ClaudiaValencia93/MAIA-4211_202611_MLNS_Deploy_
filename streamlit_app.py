@@ -195,11 +195,16 @@ with tab1:
         "La igualdad de género implica garantizar los mismos derechos y oportunidades para hombres y mujeres",
         "El crecimiento económico inclusivo debe generar empleo digno y proteger los derechos laborales",
     ]
-    selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
-    default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
+    if "selected_example_key" not in st.session_state:
+        st.session_state.selected_example_key = 0
 
-    if "borrado" not in st.session_state:
-        st.session_state.borrado = False
+    selected_example = st.selectbox(
+        "💡 Elige un texto de ejemplo:",
+        example_texts,
+        key=f"selectbox_{st.session_state.selected_example_key}"
+    )
+
+    default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
 
     if st.session_state.borrado:
         valor_inicial = ""
@@ -222,6 +227,7 @@ with tab1:
     with col_btn2:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
             st.session_state.borrado = True
+            st.session_state.selected_example_key += 1
             st.rerun()
 
     if clasificar:
