@@ -16,23 +16,23 @@ from ModelController import ModelController, ODS_NAMES
 
 # Colores e íconos oficiales de cada ODS
 ODS_INFO = {
-    1:  {"color": "#E5243B", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-01.png"},
-    2:  {"color": "#DDA63A", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-02.png"},
-    3:  {"color": "#4C9F38", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-03.png"},
-    4:  {"color": "#C5192D", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-04.png"},
-    5:  {"color": "#FF3A21", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-05.png"},
-    6:  {"color": "#26BDE2", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-06.png"},
-    7:  {"color": "#FCC30B", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-07.png"},
-    8:  {"color": "#A21942", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-08.png"},
-    9:  {"color": "#FD6925", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-09.png"},
-    10: {"color": "#DD1367", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-10.png"},
-    11: {"color": "#FD9D24", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-11.png"},
-    12: {"color": "#BF8B2E", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-12.png"},
-    13: {"color": "#3F7E44", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-13.png"},
-    14: {"color": "#0A97D9", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-14.png"},
-    15: {"color": "#56C02B", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-15.png"},
-    16: {"color": "#00689D", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-16.png"},
-    17: {"color": "#19486A", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-17.png"},
+    1:  {"color": "#E5243B", "img": "img/ods1.png"},
+    2:  {"color": "#DDA63A", "img": "img/ods2.png"},
+    3:  {"color": "#4C9F38", "img": "img/ods3.png"},
+    4:  {"color": "#C5192D", "img": "img/ods4.png"},
+    5:  {"color": "#FF3A21", "img": "img/ods5.png"},
+    6:  {"color": "#26BDE2", "img": "img/ods6.png"},
+    7:  {"color": "#FCC30B", "img": "img/ods7.png"},
+    8:  {"color": "#A21942", "img": "img/ods8.png"},
+    9:  {"color": "#FD6925", "img": "img/ods9.png"},
+    10: {"color": "#DD1367", "img": "img/ods10.png"},
+    11: {"color": "#FD9D24", "img": "img/ods11.png"},
+    12: {"color": "#BF8B2E", "img": "img/ods12.png"},
+    13: {"color": "#3F7E44", "img": "img/ods13.png"},
+    14: {"color": "#0A97D9", "img": "img/ods14.png"},
+    15: {"color": "#56C02B", "img": "img/ods15.png"},
+    16: {"color": "#00689D", "img": "img/ods16.png"},
+    17: {"color": "#19486A", "img": "img/ods17.png"},
 }
 
 # ─────────────────────────────────────────────
@@ -134,12 +134,9 @@ with tab1:
 
             with col1:
                 with col1:
-                    st.markdown("### 🎯 Resultado")
-                    ods_img = ods_info.get("img", "")
-                    st.markdown(
-                        f'<img src="{ods_img}" width="250" style="border-radius:12px;">',
-                        unsafe_allow_html=True,
-                    )
+                   st.markdown("### 🎯 Resultado")
+                   ods_img = ods_info.get("img", "")
+                   st.image(ods_img, width=250)
 
             with col2:
                 st.markdown("### 📊 Top 5 Probabilidades")
