@@ -39,7 +39,7 @@ ODS_INFO = {
 # Configuración de la página
 # ─────────────────────────────────────────────
 st.set_page_config(
-    page_title="Clasificador de ODS",
+    page_title="Clasificador de texto de ODS",
     page_icon="🌍",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -200,9 +200,11 @@ with tab1:
     selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
 
     default_text = "" if selected_example == "Selecciona un ejemplo..." else selected_example
+    if "texto" not in st.session_state:
+        st.session_state.texto = default_text
+
     user_text = st.text_area(
         "✍️ O escribe y/o pega tu texto aquí:",
-        value=st.session_state.get("texto", default_text),
         height=150,
         key="texto",
         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
@@ -213,7 +215,7 @@ with tab1:
         clasificar = st.button("🔍 Clasificar el texto", type="primary", use_container_width=True, key="btn_individual")
     with col_btn2:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
-            st.session_state["texto"] = ""
+            st.session_state.texto = ""
             st.rerun()
 
     if clasificar:
@@ -230,7 +232,7 @@ with tab1:
 
             with col1:
                 with col1:
-                   st.markdown("### 🎯 Resultado ODS")
+                   st.markdown("### 🎯 Resultado del ODS")
                    ods_img = ods_info.get("img", "")
                    st.image(ods_img, width=250)
 
@@ -259,9 +261,13 @@ with tab1:
 # ── TAB 2: Clasificación por lote ─────────────
 with tab2:
     st.subheader("Clasificar múltiples textos")
-    st.markdown("Pega un texto por línea. El modelo clasificará cada uno de forma independiente.")
+    st.markdown("Pega un texto por línea. El modelo clasificará cada uno de forma independiente")
 
-    batch_input = st.text_area("📋 Textos (uno por línea):",
+    if "batch" not in st.session_state:
+        st.session_state.batch = ""
+
+    batch_input = st.text_area(
+        "📋 Textos (uno por línea):",
         height=200,
         key="batch",
         placeholder="Texto 1\nTexto 2\nTexto 3\n...",
@@ -272,7 +278,7 @@ with tab2:
         clasificar_lote = st.button("🔍 Clasificar los textos", type="primary", use_container_width=True, key="btn_lote")
     with col_btn4:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar2"):
-            st.session_state["batch"] = ""
+            st.session_state.batch = ""
             st.rerun()
 
     if clasificar_lote:
