@@ -14,6 +14,27 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 
 from ModelController import ModelController, ODS_NAMES
 
+# Colores e íconos oficiales de cada ODS
+ODS_INFO = {
+    1:  {"color": "#E5243B", "icon": "🤝", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-01.png"},
+    2:  {"color": "#DDA63A", "icon": "🌾", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-02.png"},
+    3:  {"color": "#4C9F38", "icon": "❤️", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-03.png"},
+    4:  {"color": "#C5192D", "icon": "📚", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-04.png"},
+    5:  {"color": "#FF3A21", "icon": "♀️", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-05.png"},
+    6:  {"color": "#26BDE2", "icon": "💧", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-06.png"},
+    7:  {"color": "#FCC30B", "icon": "⚡", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-07.png"},
+    8:  {"color": "#A21942", "icon": "📈", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-08.png"},
+    9:  {"color": "#FD6925", "icon": "🏭", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-09.png"},
+    10: {"color": "#DD1367", "icon": "⚖️", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-10.png"},
+    11: {"color": "#FD9D24", "icon": "🏙️", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-11.png"},
+    12: {"color": "#BF8B2E", "icon": "♻️", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-12.png"},
+    13: {"color": "#3F7E44", "icon": "🌍", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-13.png"},
+    14: {"color": "#0A97D9", "icon": "🐋", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-14.png"},
+    15: {"color": "#56C02B", "icon": "🌿", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-15.png"},
+    16: {"color": "#00689D", "icon": "🕊️", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-16.png"},
+    17: {"color": "#19486A", "icon": "🤝", "img": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/08/S-Goal-17.png"},
+}
+
 # ─────────────────────────────────────────────
 # Configuración de la página
 # ─────────────────────────────────────────────
@@ -55,7 +76,7 @@ with st.sidebar:
 # ─────────────────────────────────────────────
 # Título principal
 # ─────────────────────────────────────────────
-st.title("🌍 Clasificador de Textos por ODS")
+st.title("Clasificador de Textos por ODS")
 st.markdown(
     "Ingresa un texto relacionado con los Objetivos de Desarrollo Sostenible y el modelo "
     "predecirá a cuál ODS pertenece."
@@ -106,15 +127,32 @@ with tab1:
             with st.spinner("Clasificando..."):
                 result = controller.predict(user_text)
 
+            ods_num = result['ods_number']
+            ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "icon": "🌍"})
+            ods_color = ods_info["color"]
+            ods_icon = ods_info["icon"]
+                 
             col1, col2 = st.columns([1, 2])
 
             with col1:
                 st.markdown("### 🎯 Resultado")
-                st.metric(
-                    label="ODS Predicho",
-                    value=f"ODS {result['ods_number']}",
-                )
-                st.success(f"**{result['ods_name']}**")
+                st.markdown(
+                f"""
+                <div style="
+                    background-color: {ods_color};
+                    border-radius: 16px;
+                    padding: 32px 20px;
+                    text-align: center;
+                    color: white;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+                ">
+                    <div style="font-size: 3.5rem; margin-bottom: 8px;">{ods_icon}</div>
+                    <div style="font-size: 2.8rem; font-weight: 900; margin: 4px 0;">ODS {ods_num}</div>
+                    <div style="font-size: 0.95rem; font-weight: 600; opacity: 0.95; margin-top: 8px;">{result['ods_name']}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
             with col2:
                 st.markdown("### 📊 Top 5 Probabilidades")
