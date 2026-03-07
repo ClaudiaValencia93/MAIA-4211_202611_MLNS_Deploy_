@@ -136,9 +136,9 @@ with tab1:
 
             with col1:
                 with col1:
-                st.markdown("### 🎯 Resultado")
-                ods_img = ods_info.get("img", "")
-                st.image(ods_img, width=250)
+                    st.markdown("### 🎯 Resultado")
+                    ods_img = ods_info.get("img", "")
+                    st.image(ods_img, width=250)
 
             with col2:
                 st.markdown("### 📊 Top 5 Probabilidades")
