@@ -47,12 +47,38 @@ st.set_page_config(
 
 st.markdown("""
     <style>
+        /* Pestañas hover y activa */
         .stTabs [data-baseweb="tab"]:hover {
             color: #0078B4 !important;
         }
         .stTabs [data-baseweb="tab"][aria-selected="true"] {
             color: #0078B4 !important;
             border-bottom-color: #0078B4 !important;
+        }
+        .stTabs [data-baseweb="tab-highlight"] {
+            background-color: #0078B4 !important;
+        }
+
+        /* Borde del selectbox al hacer hover y focus */
+        .stSelectbox > div > div:focus,
+        .stSelectbox > div > div:hover {
+            border-color: #0078B4 !important;
+        }
+
+        /* Borde del textarea al hacer hover y focus */
+        .stTextArea > div > div:focus-within {
+            border-color: #0078B4 !important;
+        }
+
+        /* Botón primario */
+        .stButton > button[kind="primary"] {
+            background-color: #0078B4 !important;
+            border-color: #0078B4 !important;
+            color: white !important;
+        }
+        .stButton > button[kind="primary"]:hover {
+            background-color: #005a8e !important;
+            border-color: #005a8e !important;
         }
     </style>
 """, unsafe_allow_html=True)
