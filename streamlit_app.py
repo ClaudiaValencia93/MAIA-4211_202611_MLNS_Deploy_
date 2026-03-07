@@ -130,8 +130,7 @@ with tab1:
             ods_num = result['ods_number']
             ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "icon": "🌍"})
             ods_color = ods_info["color"]
-            ods_icon = ods_info["icon"]
-                 
+                             
             col1, col2 = st.columns([1, 2])
 
             with col1:
