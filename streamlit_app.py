@@ -222,6 +222,10 @@ with tab1:
         if not user_text.strip():
             st.warning("⚠️ Por favor ingresa un texto antes de clasificar")
         else:
+            palabras_validas = [w for w in user_text.strip().split() if w.isalpha() and len(w) > 3]
+            if len(palabras_validas) < 5:
+                st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
+        else:
             with st.spinner("Clasificando..."):
                 result = controller.predict(user_text)
 
@@ -284,7 +288,13 @@ with tab2:
     if clasificar_lote:
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
         if not lines:
-            st.warning("⚠️ Por favor ingresa al menos un texto")
+            st.warning("⚠️ Por favor ingresa al menos un texto antes de clasificar")
+         else:
+            lines_validas = [l for l in lines if len([w for w in l.split() if w.isalpha() and len(w) > 3]) >= 5]
+            if not lines_validas:
+                st.warning("⚠️ Por favor ingresa textos válidos para clasificar")
+            else:
+                lines = lines_validas
         else:
             with st.spinner(f"Clasificando {len(lines)} textos..."):
                 results = controller.predict_batch(lines)
