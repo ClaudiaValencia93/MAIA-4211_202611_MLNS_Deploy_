@@ -91,7 +91,7 @@ try:
     st.markdown(
         """
         <div style="
-            background-color: #3bb3db;
+            background-color: #0078B4;
             color: white;
             padding: 12px 20px;
             border-radius: 8px;
