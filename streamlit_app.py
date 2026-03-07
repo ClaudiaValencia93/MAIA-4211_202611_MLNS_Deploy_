@@ -89,6 +89,16 @@ st.markdown("""
             background-color: #005a8e !important;
             border-color: #005a8e !important;
         }
+        /* Botón secundario */
+        .stButton > button[kind="secondary"] {
+            background-color: #0078B4 !important;
+            border-color: #0078B4 !important;
+            color: white !important;
+        }
+        .stButton > button[kind="secondary"]:hover {
+            background-color: #005a8e !important;
+            border-color: #005a8e !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -185,9 +195,6 @@ except FileNotFoundError as e:
 tab1, tab2 = st.tabs(["📝 Texto individual", "📋 Clasificación por lote"])
 
 # ── TAB 1: Predicción individual ──────────────
-
-
-
 with tab1:
     st.subheader("Clasificar un texto")
     example_texts = [
