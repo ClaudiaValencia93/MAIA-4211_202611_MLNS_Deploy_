@@ -133,7 +133,7 @@ with st.sidebar:
     st.markdown("Claudia Valencia Morales")
     st.markdown("Sandro Fabián Castro")
     st.markdown("---")
-    st.markdown("Maestría en Inteligencia Artificial")
+    st.markdown("Maestría en Inteligencia Artificial Universidad de los Andes")
 
 # ─────────────────────────────────────────────
 # Título principal
