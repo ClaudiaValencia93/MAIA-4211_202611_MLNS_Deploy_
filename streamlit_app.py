@@ -40,7 +40,8 @@ ODS_INFO = {
 # ─────────────────────────────────────────────
 st.set_page_config(
     page_title="Clasificador de texto de ODS",
-    page_icon="🌍",
+    #page_icon="🌍",
+    page_icon=os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"),
     layout="wide",
     initial_sidebar_state="expanded",
 )
