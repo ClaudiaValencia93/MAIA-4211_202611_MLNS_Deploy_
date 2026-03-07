@@ -187,7 +187,7 @@ with tab2:
         placeholder="Texto 1\nTexto 2\nTexto 3\n...",
     )
 
-    if st.button("🔍 Clasificar", type="primary", use_container_width=True):
+    if st.button("🔍 Clasificar los textos", type="primary", use_container_width=True):
         lines = [line.strip() for line in batch_input.strip().split("\n") if line.strip()]
         if not lines:
             st.warning("⚠️ Por favor ingresa al menos un texto")
