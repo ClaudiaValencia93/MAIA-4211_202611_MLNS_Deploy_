@@ -60,7 +60,7 @@ def load_model():
 with st.sidebar:
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Sustainable_Development_Goals.jpg/640px-Sustainable_Development_Goals.jpg",
              use_container_width=True)
-    st.markdown("##Clasificador de ODS")
+    st.markdown("## Clasificador de ODS")
     st.markdown(
         "En 2015, la ONU aprobó la Agenda 2030 con **17 Objetivos de Desarrollo Sostenible (ODS)** para mejorar la vida"
         "de todas las personas sin dejar a nadie atrás, abordando desafíos como la pobreza, la educación," 
@@ -74,8 +74,8 @@ with st.sidebar:
     st.markdown("**Métrica F1-Score:** 85.83%")
     st.markdown("---")
     st.markdown("**Autores:**")
-    st.markdown("*Claudia Valencia Morales*")
-    st.markdown("*Sandro Fabián Castro*")
+    st.markdown("Claudia Valencia Morales")
+    st.markdown("Sandro Fabián Castro")
 
 # ─────────────────────────────────────────────
 # Título principal
