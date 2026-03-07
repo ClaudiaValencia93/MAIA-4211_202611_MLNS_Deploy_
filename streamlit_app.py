@@ -185,6 +185,9 @@ except FileNotFoundError as e:
 tab1, tab2 = st.tabs(["📝 Texto individual", "📋 Clasificación por lote"])
 
 # ── TAB 1: Predicción individual ──────────────
+
+
+
 with tab1:
     st.subheader("Clasificar un texto")
     example_texts = [
@@ -195,11 +198,10 @@ with tab1:
         "La igualdad de género implica garantizar los mismos derechos y oportunidades para hombres y mujeres",
         "El crecimiento económico inclusivo debe generar empleo digno y proteger los derechos laborales",
     ]
-    if "selected_example_key" not in st.session_state:
-        st.session_state.selected_example_key = 0
-
     if "user_input" not in st.session_state:
         st.session_state.user_input = ""
+    if "input_key" not in st.session_state:
+        st.session_state.input_key = 0
 
     selected_example = st.selectbox("💡 Elige un texto de ejemplo:", example_texts)
 
@@ -210,6 +212,7 @@ with tab1:
         "✍️ O escribe y/o pega tu texto aquí:",
         value=st.session_state.user_input,
         height=150,
+        key=f"texto_{st.session_state.input_key}",
         placeholder="Ej: La educación de calidad es un derecho fundamental para todos los niños y niñas...",
     )
 
@@ -219,6 +222,7 @@ with tab1:
     with col_btn2:
         if st.button("🗑️ Borrar texto", use_container_width=True, key="btn_limpiar1"):
             st.session_state.user_input = ""
+            st.session_state.input_key += 1
             st.rerun()
 
     if clasificar:
