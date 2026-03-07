@@ -252,12 +252,8 @@ with tab1:
     if clasificar:
         if not user_text.strip():
             st.warning("⚠️ Por favor ingresa un texto antes de clasificar")
-        # else:
-        #     palabras_validas = [w for w in user_text.strip().split() if w.isalpha() and len(w) > 3]
-        #     if len(palabras_validas) < 5:
-        #         st.warning("⚠️ Por favor ingresa un texto válido para clasificar")
         else:
-             with st.spinner("Clasificando..."):
+            with st.spinner("Clasificando..."):
                 result = controller.predict(user_text)
             ods_num = result['ods_number']
             ods_info = ODS_INFO.get(ods_num, {"color": "#333333", "img": ""})
@@ -274,17 +270,17 @@ with tab1:
                 df_probs["ODS"] = df_probs["ODS"].apply(lambda x: f"ODS {x}")
                 df_probs["Probabilidad (%)"] = (df_probs["Probabilidad"] * 100).round(2)
                 fig = px.bar(
-                        df_probs,
-                        x="ODS",
-                        y="Probabilidad (%)",
-                        color="Probabilidad (%)",
-                        color_continuous_scale="Blues",
-                        text="Probabilidad (%)",
-                    )
+                    df_probs,
+                    x="ODS",
+                    y="Probabilidad (%)",
+                    color="Probabilidad (%)",
+                    color_continuous_scale="Blues",
+                    text="Probabilidad (%)",
+                )
                 fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
                 fig.update_layout(showlegend=False, height=300)
                 st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d",
-                    "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]})
+                "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]})
 
 # with tab1:
 #     st.subheader("Clasificar un texto")
