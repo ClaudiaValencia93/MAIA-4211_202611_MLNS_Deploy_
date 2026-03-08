@@ -145,11 +145,11 @@ st.markdown("""
         ul[data-testid="stSelectboxVirtualDropdown"],
         [data-baseweb="popover"] ul,
         [data-baseweb="menu"] {
-            background-color: #262730 !important;
+            background-color: #0E1117 !important;
             color: white !important;
         }
         [data-baseweb="menu"] li {
-            background-color: #262730 !important;
+            background-color: #0E1117 !important;
             color: white !important;
         }
     </style>
