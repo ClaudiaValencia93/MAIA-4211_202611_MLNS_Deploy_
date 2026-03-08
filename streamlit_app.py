@@ -104,7 +104,17 @@ st.markdown("""
         .stApp {
             background-color: #0E1117 !important;
         }
-        
+        /* Texto principal blanco */
+        .stApp p, .stApp label, .stApp span {
+            color: white !important;
+        }
+
+        /* Recuadros de texto con color del sidebar */
+        .stTextArea textarea,
+        div[data-baseweb="select"] > div {
+            background-color: #262730 !important;
+            color: white !important;
+        }
         /* Fondo sidebar */
         [data-testid="stSidebar"] {
             background-color: #262730 !important;
