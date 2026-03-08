@@ -109,6 +109,15 @@ st.markdown("""
         [data-testid="stSidebar"] {
             background-color: #262730 !important;
         }
+         /* Texto sidebar */
+        [data-testid="stSidebar"] p, 
+        [data-testid="stSidebar"] h1,
+        [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3,
+        [data-testid="stSidebar"] span,
+        [data-testid="stSidebar"] div {
+            color: white !important;
+        }
         
         /* Fondo header */
         [data-testid="stHeader"] {
