@@ -136,6 +136,11 @@ st.markdown("""
         [data-testid="stHeader"] {
             background-color: #0E1117 !important;
         }
+        /* Placeholder texto visible */
+        .stTextArea textarea::placeholder {
+            color: #888888 !important;
+            opacity: 1 !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
