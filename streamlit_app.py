@@ -183,7 +183,7 @@ st.markdown("""
         /* Fondo tabla dataframe */
         [data-testid="stDataFrame"],
         [data-testid="stDataFrame"] * {
-            background-color: white !important;
+            background-color: #0E1117 !important;
             color: white !important;
             
         }
@@ -415,7 +415,7 @@ with tab2:
                     for text, r in zip(lines, results)
                 ])
                 st.success(f"✔️ {len(df_results)} textos clasificados.")
-                st.dataframe(df_results, use_container_width=True)
+                st.dataframe(df_results, use_container_width=True,  hide_index=True)
                 csv = df_results.to_csv(index=False).encode("utf-8")
                 st.download_button(
                     label="⬇️ Descargar resultados como CSV",
