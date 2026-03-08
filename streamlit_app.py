@@ -175,8 +175,8 @@ st.markdown("""
         [data-baseweb="popover"] > div,
         [data-baseweb="popover"] > div > div {
             border: 1px solid #262730 !important;
-            outline: none !important;
-            box-shadow: none !important;
+            # outline: none !important;
+            # box-shadow: none !important;
             border-radius: 8px !important;
         }
         
