@@ -136,6 +136,8 @@ st.markdown("""
             background-color: #005a8e !important;
             border-color: #005a8e !important;
         }
+
+        
        /* Quitar contorno blanco recuadros */
         .stTextArea > div,
         .stTextArea > div > div,
@@ -143,6 +145,18 @@ st.markdown("""
         div[data-baseweb="select"] > div,
         [data-baseweb="popover"] > div {
             border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Contorno recuadros color oscuro */
+        .stTextArea > div,
+        .stTextArea > div > div,
+        div[data-baseweb="textarea"],
+        div[data-baseweb="select"] > div,
+        [data-baseweb="popover"] > div,
+        [data-baseweb="popover"] {
+            border-color: #444444 !important;
             outline: none !important;
             box-shadow: none !important;
         }
