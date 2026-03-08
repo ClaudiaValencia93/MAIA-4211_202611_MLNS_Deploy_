@@ -26,6 +26,7 @@ ODS_NAMES = {
     14: "ODS 14 - Vida Submarina",
     15: "ODS 15 - Vida de Ecosistemas Terrestres",
     16: "ODS 16 - Paz, Justicia e Instituciones Sólidas",
+    17: "ODS 17 - Alianzas para Lograr los Objetivos",
 }
 
 
