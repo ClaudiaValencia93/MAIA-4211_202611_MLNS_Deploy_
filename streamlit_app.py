@@ -446,10 +446,10 @@ with tab2:
 st.markdown("---")
 col_footer1, col_footer2 = st.columns([1, 4])
 with col_footer1:
-    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=100)
+    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=105)
 with col_footer2:
     st.markdown(
-        "<div style='color:gray; font-size:0.90em; padding-top:15px; margin-left:-39px;'>"
+        "<div style='color:gray; font-size:0.87em; padding-top:15px; margin-left:-39px;'>"
         "Clasificador de textos de los ODS · Curso MLNS MAIA - Uniandes · Modelo: Regresión Logística + TF-IDF · F1-Score: 85.83%"
         "</div>",
         unsafe_allow_html=True,
