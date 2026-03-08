@@ -159,6 +159,12 @@ st.markdown("""
         [role="option"] * {
             color: white !important;
         }
+        /* Quitar borde blanco del dropdown al seleccionar */
+        [data-baseweb="select"] > div,
+        [data-baseweb="select"] > div:focus-within {
+            border-color: #0078B4 !important;
+            box-shadow: none !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
