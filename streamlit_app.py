@@ -138,28 +138,32 @@ st.markdown("""
         }
 
         
+       # /* Quitar contorno blanco recuadros */
+       #  .stTextArea > div,
+       #  .stTextArea > div > div,
+       #  div[data-baseweb="textarea"],
+       #  div[data-baseweb="select"] > div,
+       #  [data-baseweb="popover"] > div {
+       #      border: none !important;
+       #      outline: none !important;
+       #      box-shadow: none !important;
+       #  }
+
        /* Quitar contorno blanco recuadros */
         .stTextArea > div,
         .stTextArea > div > div,
         div[data-baseweb="textarea"],
         div[data-baseweb="select"] > div,
-        [data-baseweb="popover"] > div {
-            border: none !important;
+        [data-baseweb="popover"],
+        [data-baseweb="popover"] > div,
+        [data-baseweb="popover"] > div > div {
+            border: 1px solid #262730 !important;
             outline: none !important;
             box-shadow: none !important;
+            border-radius: 8px !important;
         }
 
-        /* Contorno recuadros color oscuro */
-        .stTextArea > div,
-        .stTextArea > div > div,
-        div[data-baseweb="textarea"],
-        div[data-baseweb="select"] > div,
-        [data-baseweb="popover"] > div,
-        [data-baseweb="popover"] {
-            border-color: #444444 !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
+        
     </style>
 """, unsafe_allow_html=True)
 
