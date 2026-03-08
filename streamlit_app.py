@@ -203,11 +203,11 @@ st.markdown("""
             box-shadow: 0 0 0 1px #0078B4 !important;
         }
 
-        /* Dropdown items hover */
-        li[role="option"]:hover {
-            background-color:  #3a3b45 !important;
-            color: white !important;
-        }
+        # /* Dropdown items hover */
+        # li[role="option"]:hover {
+        #     background-color:  #3a3b45 !important;
+        #     color: white !important;
+        # }
 
         /* Botón primario */
         .stButton > button[kind="primary"] {
