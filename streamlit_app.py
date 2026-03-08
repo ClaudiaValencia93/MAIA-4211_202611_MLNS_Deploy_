@@ -159,10 +159,12 @@ st.markdown("""
         [role="option"] * {
             color: white !important;
         }
-        /* Sin borde en dropdown */
-        [data-baseweb="select"] > div {
+        /* Sin borde contenedor dropdown abierto */
+        [data-baseweb="popover"] > div,
+        [data-baseweb="popover"] {
             border-color: transparent !important;
             box-shadow: none !important;
+            outline: none !important;
         }
         
     </style>
