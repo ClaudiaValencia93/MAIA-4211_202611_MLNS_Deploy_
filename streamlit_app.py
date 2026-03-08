@@ -38,135 +38,6 @@ ODS_INFO = {
 # ─────────────────────────────────────────────
 # Configuración de la página
 # ─────────────────────────────────────────────
-# st.markdown("""
-#     <style>
-#         /* Fondo principal y header */
-#         .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
-#             background-color: #0E1117 !important;
-#         }
-
-#         /* Fondo sidebar */
-#         [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
-#             background-color: #262730 !important;
-#         }
-
-#         /* Texto general blanco */
-#         .stApp p, .stApp label, .stApp span, .stApp div,
-#         [data-testid="stSidebar"] p, [data-testid="stSidebar"] h1,
-#         [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3,
-#         [data-testid="stSidebar"] span, [data-testid="stSidebar"] div {
-#             color: white !important;
-#         }
-
-#         /* Líneas separadoras sidebar */
-#         [data-testid="stSidebar"] hr {
-#             border-color: #555555 !important;
-#         }
-
-#         /* Recuadros inputs y selectbox */
-#         .stTextArea textarea,
-#         div[data-baseweb="select"] > div,
-#         div[data-baseweb="input"] > div {
-#             background-color: #262730 !important;
-#             color: white !important;
-#             border-color: #444444 !important;
-#             box-shadow: none !important;
-#         }
-
-#         /* Quitar borde blanco al hacer foco */
-#         div[data-baseweb="select"] > div:focus-within,
-#         div[data-baseweb="select"] > div:hover,
-#         .stTextArea textarea:focus,
-#         .stTextArea > div:focus-within {
-#             border-color: #0078B4 !important;
-#             box-shadow: 0 0 0 1px #0078B4 !important;
-#             outline: none !important;
-#         }
-
-#         /* Placeholder */
-#         .stTextArea textarea::placeholder {
-#             color: #888888 !important;
-#             opacity: 1 !important;
-#         }
-
-#         /* Dropdown fondo y texto */
-#         [data-baseweb="menu"],
-#         [data-baseweb="popover"],
-#         [data-baseweb="popover"] > div,
-#         ul[data-testid="stSelectboxVirtualDropdown"] {
-#             background-color: #262730 !important;
-#             border-color: #444444 !important;
-#             box-shadow: none !important;
-#         }
-
-#         [data-baseweb="menu"] li,
-#         [role="option"], [role="option"] * {
-#             background-color: #262730 !important;
-#             color: white !important;
-#         }
-
-#         /* Hover opciones dropdown */
-#         li[role="option"]:hover,
-#         [role="option"]:hover {
-#             background-color: #0078B4 !important;
-#             color: white !important;
-#         }
-
-#         /* Pestañas */
-#         .stTabs [data-baseweb="tab"]:hover {
-#             color: #0078B4 !important;
-#         }
-#         .stTabs [data-baseweb="tab"][aria-selected="true"] {
-#             color: #0078B4 !important;
-#             border-bottom-color: #0078B4 !important;
-#         }
-#         .stTabs [data-baseweb="tab-highlight"] {
-#             background-color: #0078B4 !important;
-#         }
-
-#         /* Botones */
-#         .stButton > button[kind="primary"],
-#         .stButton > button[kind="secondary"] {
-#             background-color: #0078B4 !important;
-#             border-color: #0078B4 !important;
-#             color: white !important;
-#         }
-#         .stButton > button[kind="primary"]:hover,
-#         .stButton > button[kind="secondary"]:hover {
-#             background-color: #005a8e !important;
-#             border-color: #005a8e !important;
-#         }
-
-        
-#        # /* Quitar contorno blanco recuadros */
-#        #  .stTextArea > div,
-#        #  .stTextArea > div > div,
-#        #  div[data-baseweb="textarea"],
-#        #  div[data-baseweb="select"] > div,
-#        #  [data-baseweb="popover"] > div {
-#        #      border: none !important;
-#        #      outline: none !important;
-#        #      box-shadow: none !important;
-#        #  }
-
-#        /* Quitar contorno blanco recuadros */
-#         .stTextArea > div,
-#         .stTextArea > div > div,
-#         div[data-baseweb="textarea"],
-#         div[data-baseweb="select"] > div,
-#         [data-baseweb="popover"],
-#         [data-baseweb="popover"] > div,
-#         [data-baseweb="popover"] > div > div {
-#             border: 1px solid #262730 !important;
-#             outline: none !important;
-#             box-shadow: none !important;
-#             border-radius: 8px !important;
-#         }
-
-        
-#     </style>
-# """, unsafe_allow_html=True)
-
 st.set_page_config(
     page_title="Clasificador de texto de ODS",
     #page_icon="🌍",
@@ -487,7 +358,8 @@ with tab1:
                     text="Probabilidad (%)",
                 )
                 fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
-                fig.update_layout(showlegend=False, height=300)
+                fig.update_layout(showlegend=False, height=300, paper_bgcolor='rgba(0,0,0,0)',
+                        plot_bgcolor='rgba(0,0,0,0)', font_color='white' )
                 st.plotly_chart(fig, use_container_width=True, config={"modeBarButtonsToRemove": ["zoom2d", "pan2d",
                 "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"]})
 
