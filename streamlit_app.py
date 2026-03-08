@@ -178,6 +178,9 @@ st.markdown("""
             # outline: none !important;
             # box-shadow: none !important;
             border-radius: 8px !important;
+             /* Tabla sin fondo blanco */
+        [data-testid="stDataFrame"] > div {
+            background-color: transparent !important;
         }
         
         
