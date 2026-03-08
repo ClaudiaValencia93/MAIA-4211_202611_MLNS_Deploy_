@@ -38,81 +38,146 @@ ODS_INFO = {
 # ─────────────────────────────────────────────
 # Configuración de la página
 # ─────────────────────────────────────────────
+# st.markdown("""
+#     <style>
+#         /* Fondo principal y header */
+#         .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+#             background-color: #0E1117 !important;
+#         }
+
+#         /* Fondo sidebar */
+#         [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
+#             background-color: #262730 !important;
+#         }
+
+#         /* Texto general blanco */
+#         .stApp p, .stApp label, .stApp span, .stApp div,
+#         [data-testid="stSidebar"] p, [data-testid="stSidebar"] h1,
+#         [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3,
+#         [data-testid="stSidebar"] span, [data-testid="stSidebar"] div {
+#             color: white !important;
+#         }
+
+#         /* Líneas separadoras sidebar */
+#         [data-testid="stSidebar"] hr {
+#             border-color: #555555 !important;
+#         }
+
+#         /* Recuadros inputs y selectbox */
+#         .stTextArea textarea,
+#         div[data-baseweb="select"] > div,
+#         div[data-baseweb="input"] > div {
+#             background-color: #262730 !important;
+#             color: white !important;
+#             border-color: #444444 !important;
+#             box-shadow: none !important;
+#         }
+
+#         /* Quitar borde blanco al hacer foco */
+#         div[data-baseweb="select"] > div:focus-within,
+#         div[data-baseweb="select"] > div:hover,
+#         .stTextArea textarea:focus,
+#         .stTextArea > div:focus-within {
+#             border-color: #0078B4 !important;
+#             box-shadow: 0 0 0 1px #0078B4 !important;
+#             outline: none !important;
+#         }
+
+#         /* Placeholder */
+#         .stTextArea textarea::placeholder {
+#             color: #888888 !important;
+#             opacity: 1 !important;
+#         }
+
+#         /* Dropdown fondo y texto */
+#         [data-baseweb="menu"],
+#         [data-baseweb="popover"],
+#         [data-baseweb="popover"] > div,
+#         ul[data-testid="stSelectboxVirtualDropdown"] {
+#             background-color: #262730 !important;
+#             border-color: #444444 !important;
+#             box-shadow: none !important;
+#         }
+
+#         [data-baseweb="menu"] li,
+#         [role="option"], [role="option"] * {
+#             background-color: #262730 !important;
+#             color: white !important;
+#         }
+
+#         /* Hover opciones dropdown */
+#         li[role="option"]:hover,
+#         [role="option"]:hover {
+#             background-color: #0078B4 !important;
+#             color: white !important;
+#         }
+
+#         /* Pestañas */
+#         .stTabs [data-baseweb="tab"]:hover {
+#             color: #0078B4 !important;
+#         }
+#         .stTabs [data-baseweb="tab"][aria-selected="true"] {
+#             color: #0078B4 !important;
+#             border-bottom-color: #0078B4 !important;
+#         }
+#         .stTabs [data-baseweb="tab-highlight"] {
+#             background-color: #0078B4 !important;
+#         }
+
+#         /* Botones */
+#         .stButton > button[kind="primary"],
+#         .stButton > button[kind="secondary"] {
+#             background-color: #0078B4 !important;
+#             border-color: #0078B4 !important;
+#             color: white !important;
+#         }
+#         .stButton > button[kind="primary"]:hover,
+#         .stButton > button[kind="secondary"]:hover {
+#             background-color: #005a8e !important;
+#             border-color: #005a8e !important;
+#         }
+
+        
+#        # /* Quitar contorno blanco recuadros */
+#        #  .stTextArea > div,
+#        #  .stTextArea > div > div,
+#        #  div[data-baseweb="textarea"],
+#        #  div[data-baseweb="select"] > div,
+#        #  [data-baseweb="popover"] > div {
+#        #      border: none !important;
+#        #      outline: none !important;
+#        #      box-shadow: none !important;
+#        #  }
+
+#        /* Quitar contorno blanco recuadros */
+#         .stTextArea > div,
+#         .stTextArea > div > div,
+#         div[data-baseweb="textarea"],
+#         div[data-baseweb="select"] > div,
+#         [data-baseweb="popover"],
+#         [data-baseweb="popover"] > div,
+#         [data-baseweb="popover"] > div > div {
+#             border: 1px solid #262730 !important;
+#             outline: none !important;
+#             box-shadow: none !important;
+#             border-radius: 8px !important;
+#         }
+
+        
+#     </style>
+# """, unsafe_allow_html=True)
+
+st.set_page_config(
+    page_title="Clasificador de texto de ODS",
+    #page_icon="🌍",
+    page_icon=os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"),
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 st.markdown("""
     <style>
-        /* Fondo principal y header */
-        .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
-            background-color: #0E1117 !important;
-        }
-
-        /* Fondo sidebar */
-        [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
-            background-color: #262730 !important;
-        }
-
-        /* Texto general blanco */
-        .stApp p, .stApp label, .stApp span, .stApp div,
-        [data-testid="stSidebar"] p, [data-testid="stSidebar"] h1,
-        [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3,
-        [data-testid="stSidebar"] span, [data-testid="stSidebar"] div {
-            color: white !important;
-        }
-
-        /* Líneas separadoras sidebar */
-        [data-testid="stSidebar"] hr {
-            border-color: #555555 !important;
-        }
-
-        /* Recuadros inputs y selectbox */
-        .stTextArea textarea,
-        div[data-baseweb="select"] > div,
-        div[data-baseweb="input"] > div {
-            background-color: #262730 !important;
-            color: white !important;
-            border-color: #444444 !important;
-            box-shadow: none !important;
-        }
-
-        /* Quitar borde blanco al hacer foco */
-        div[data-baseweb="select"] > div:focus-within,
-        div[data-baseweb="select"] > div:hover,
-        .stTextArea textarea:focus,
-        .stTextArea > div:focus-within {
-            border-color: #0078B4 !important;
-            box-shadow: 0 0 0 1px #0078B4 !important;
-            outline: none !important;
-        }
-
-        /* Placeholder */
-        .stTextArea textarea::placeholder {
-            color: #888888 !important;
-            opacity: 1 !important;
-        }
-
-        /* Dropdown fondo y texto */
-        [data-baseweb="menu"],
-        [data-baseweb="popover"],
-        [data-baseweb="popover"] > div,
-        ul[data-testid="stSelectboxVirtualDropdown"] {
-            background-color: #262730 !important;
-            border-color: #444444 !important;
-            box-shadow: none !important;
-        }
-
-        [data-baseweb="menu"] li,
-        [role="option"], [role="option"] * {
-            background-color: #262730 !important;
-            color: white !important;
-        }
-
-        /* Hover opciones dropdown */
-        li[role="option"]:hover,
-        [role="option"]:hover {
-            background-color: #0078B4 !important;
-            color: white !important;
-        }
-
-        /* Pestañas */
+        /* Pestañas hover y activa */
         .stTabs [data-baseweb="tab"]:hover {
             color: #0078B4 !important;
         }
@@ -124,32 +189,113 @@ st.markdown("""
             background-color: #0078B4 !important;
         }
 
-        /* Botones */
-        .stButton > button[kind="primary"],
+        /* Todos los inputs, selectbox y textarea - quitar rojo */
+        div[data-baseweb="select"] > div:focus-within,
+        div[data-baseweb="select"] > div:hover,
+        div[data-baseweb="base-input"]:focus-within,
+        div[data-baseweb="base-input"]:hover,
+        div[data-baseweb="textarea"]:focus-within,
+        div[data-baseweb="textarea"]:hover,
+        .stTextArea textarea:focus,
+        .stTextInput input:focus {
+            border-color: #0078B4 !important;
+            outline-color: #0078B4 !important;
+            box-shadow: 0 0 0 1px #0078B4 !important;
+        }
+
+        /* Dropdown items hover */
+        li[role="option"]:hover {
+            background-color: #0078B4 !important;
+            color: white !important;
+        }
+
+        /* Botón primario */
+        .stButton > button[kind="primary"] {
+            background-color: #0078B4 !important;
+            border-color: #0078B4 !important;
+            color: white !important;
+        }
+        .stButton > button[kind="primary"]:hover {
+            background-color: #005a8e !important;
+            border-color: #005a8e !important;
+        }
+        /* Botón secundario */
         .stButton > button[kind="secondary"] {
             background-color: #0078B4 !important;
             border-color: #0078B4 !important;
             color: white !important;
         }
-        .stButton > button[kind="primary"]:hover,
         .stButton > button[kind="secondary"]:hover {
             background-color: #005a8e !important;
             border-color: #005a8e !important;
         }
+        /* Fondo principal */
+        .stApp {
+            background-color: #0E1117 !important;
+        }
+        /* Texto principal blanco */
+        .stApp p, .stApp label, .stApp span {
+            color: white !important;
+        }
 
-        
-       # /* Quitar contorno blanco recuadros */
-       #  .stTextArea > div,
-       #  .stTextArea > div > div,
-       #  div[data-baseweb="textarea"],
-       #  div[data-baseweb="select"] > div,
-       #  [data-baseweb="popover"] > div {
-       #      border: none !important;
-       #      outline: none !important;
-       #      box-shadow: none !important;
-       #  }
-
-       /* Quitar contorno blanco recuadros */
+        /* Recuadros de texto con color del sidebar */
+        .stTextArea textarea,
+        div[data-baseweb="select"] > div {
+            background-color: #262730 !important;
+            color: white !important;
+        }
+        /* Fondo sidebar */
+        [data-testid="stSidebar"] {
+            background-color: #262730 !important;
+        }
+         /* Texto sidebar */
+        [data-testid="stSidebar"] p, 
+        [data-testid="stSidebar"] h1,
+        [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3,
+        [data-testid="stSidebar"] span,
+        [data-testid="stSidebar"] div {
+            color: white !important;
+        }
+        /* Líneas separadoras sidebar */
+        [data-testid="stSidebar"] hr {
+            border-color: #555555 !important;
+        }
+        /* Fondo header */
+        [data-testid="stHeader"] {
+            background-color: #0E1117 !important;
+        }
+        /* Placeholder texto visible */
+        .stTextArea textarea::placeholder {
+            color: #888888 !important;
+            opacity: 1 !important;
+        }
+        /* Fondo dropdown opciones */
+        ul[data-testid="stSelectboxVirtualDropdown"],
+        [data-baseweb="popover"] ul,
+        [data-baseweb="menu"] {
+            background-color: #0E1117 !important;
+            color: white !important;
+        }
+        [data-baseweb="menu"] li {
+            background-color: #0E1117 !important;
+            color: white !important;
+        }
+       /* Texto opciones dropdown forzado */
+        [role="listbox"] li,
+        [role="listbox"] li *,
+        [role="option"],
+        [role="option"] * {
+            color: white !important;
+        }
+        /* Sin borde contenedor dropdown abierto */
+        [data-baseweb="popover"] > div,
+        [data-baseweb="popover"] {
+            border-color: transparent !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        /* Quitar contorno blanco recuadros */
         .stTextArea > div,
         .stTextArea > div > div,
         div[data-baseweb="textarea"],
@@ -162,142 +308,9 @@ st.markdown("""
             box-shadow: none !important;
             border-radius: 8px !important;
         }
-
         
     </style>
 """, unsafe_allow_html=True)
-
-# st.set_page_config(
-#     page_title="Clasificador de texto de ODS",
-#     #page_icon="🌍",
-#     page_icon=os.path.join(os.path.dirname(__file__), "img", "poster_ods_.png"),
-#     layout="wide",
-#     initial_sidebar_state="expanded",
-# )
-
-# st.markdown("""
-#     <style>
-#         /* Pestañas hover y activa */
-#         .stTabs [data-baseweb="tab"]:hover {
-#             color: #0078B4 !important;
-#         }
-#         .stTabs [data-baseweb="tab"][aria-selected="true"] {
-#             color: #0078B4 !important;
-#             border-bottom-color: #0078B4 !important;
-#         }
-#         .stTabs [data-baseweb="tab-highlight"] {
-#             background-color: #0078B4 !important;
-#         }
-
-#         /* Todos los inputs, selectbox y textarea - quitar rojo */
-#         div[data-baseweb="select"] > div:focus-within,
-#         div[data-baseweb="select"] > div:hover,
-#         div[data-baseweb="base-input"]:focus-within,
-#         div[data-baseweb="base-input"]:hover,
-#         div[data-baseweb="textarea"]:focus-within,
-#         div[data-baseweb="textarea"]:hover,
-#         .stTextArea textarea:focus,
-#         .stTextInput input:focus {
-#             border-color: #0078B4 !important;
-#             outline-color: #0078B4 !important;
-#             box-shadow: 0 0 0 1px #0078B4 !important;
-#         }
-
-#         /* Dropdown items hover */
-#         li[role="option"]:hover {
-#             background-color: #0078B4 !important;
-#             color: white !important;
-#         }
-
-#         /* Botón primario */
-#         .stButton > button[kind="primary"] {
-#             background-color: #0078B4 !important;
-#             border-color: #0078B4 !important;
-#             color: white !important;
-#         }
-#         .stButton > button[kind="primary"]:hover {
-#             background-color: #005a8e !important;
-#             border-color: #005a8e !important;
-#         }
-#         /* Botón secundario */
-#         .stButton > button[kind="secondary"] {
-#             background-color: #0078B4 !important;
-#             border-color: #0078B4 !important;
-#             color: white !important;
-#         }
-#         .stButton > button[kind="secondary"]:hover {
-#             background-color: #005a8e !important;
-#             border-color: #005a8e !important;
-#         }
-#         /* Fondo principal */
-#         .stApp {
-#             background-color: #0E1117 !important;
-#         }
-#         /* Texto principal blanco */
-#         .stApp p, .stApp label, .stApp span {
-#             color: white !important;
-#         }
-
-#         /* Recuadros de texto con color del sidebar */
-#         .stTextArea textarea,
-#         div[data-baseweb="select"] > div {
-#             background-color: #262730 !important;
-#             color: white !important;
-#         }
-#         /* Fondo sidebar */
-#         [data-testid="stSidebar"] {
-#             background-color: #262730 !important;
-#         }
-#          /* Texto sidebar */
-#         [data-testid="stSidebar"] p, 
-#         [data-testid="stSidebar"] h1,
-#         [data-testid="stSidebar"] h2,
-#         [data-testid="stSidebar"] h3,
-#         [data-testid="stSidebar"] span,
-#         [data-testid="stSidebar"] div {
-#             color: white !important;
-#         }
-#         /* Líneas separadoras sidebar */
-#         [data-testid="stSidebar"] hr {
-#             border-color: #555555 !important;
-#         }
-#         /* Fondo header */
-#         [data-testid="stHeader"] {
-#             background-color: #0E1117 !important;
-#         }
-#         /* Placeholder texto visible */
-#         .stTextArea textarea::placeholder {
-#             color: #888888 !important;
-#             opacity: 1 !important;
-#         }
-#         /* Fondo dropdown opciones */
-#         ul[data-testid="stSelectboxVirtualDropdown"],
-#         [data-baseweb="popover"] ul,
-#         [data-baseweb="menu"] {
-#             background-color: #0E1117 !important;
-#             color: white !important;
-#         }
-#         [data-baseweb="menu"] li {
-#             background-color: #0E1117 !important;
-#             color: white !important;
-#         }
-#        /* Texto opciones dropdown forzado */
-#         [role="listbox"] li,
-#         [role="listbox"] li *,
-#         [role="option"],
-#         [role="option"] * {
-#             color: white !important;
-#         }
-#         /* Sin borde contenedor dropdown abierto */
-#         [data-baseweb="popover"] > div,
-#         [data-baseweb="popover"] {
-#             border-color: transparent !important;
-#             box-shadow: none !important;
-#             outline: none !important;
-#         }
-        
-#     </style>
-# """, unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────
 # Carga del modelo cacheado para eficiencia
