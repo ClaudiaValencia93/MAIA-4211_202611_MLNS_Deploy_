@@ -183,9 +183,9 @@ st.markdown("""
         /* Fondo tabla dataframe */
         [data-testid="stDataFrame"],
         [data-testid="stDataFrame"] * {
-            background-color: #0E1117 !important;
+            background-color: white !important;
             color: white !important;
-            font_color='white
+            
         }
         
     </style>
