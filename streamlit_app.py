@@ -152,10 +152,11 @@ st.markdown("""
             background-color: #0E1117 !important;
             color: white !important;
         }
-        /* Texto opciones dropdown */
-        [data-baseweb="menu"] li span,
-        [data-baseweb="menu"] li div,
-        ul[data-testid="stSelectboxVirtualDropdown"] li span {
+       /* Texto opciones dropdown forzado */
+        [role="listbox"] li,
+        [role="listbox"] li *,
+        [role="option"],
+        [role="option"] * {
             color: white !important;
         }
     </style>
