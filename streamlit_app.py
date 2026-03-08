@@ -185,6 +185,7 @@ st.markdown("""
         [data-testid="stDataFrame"] * {
             background-color: #0E1117 !important;
             color: white !important;
+            font_color='white
         }
         
     </style>
