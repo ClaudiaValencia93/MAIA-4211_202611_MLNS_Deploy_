@@ -1,4 +1,4 @@
-# Clasificador de Textos de los ODS 
+# Clasificador de textos de los Objetivos de Desarrollo Sostenible (ODS) 
 
 Aplicación web desarrollada como parte del curso de Machine Learning No Supervisado (MLNS) 
 de la Maestría en Inteligencia Artificial de la Universidad de los Andes.
