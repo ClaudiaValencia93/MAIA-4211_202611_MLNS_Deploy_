@@ -136,8 +136,13 @@ st.markdown("""
             background-color: #005a8e !important;
             border-color: #005a8e !important;
         }
-        /* Quitar contorno blanco de todos los recuadros */
-        * {
+       /* Quitar contorno blanco recuadros */
+        .stTextArea > div,
+        .stTextArea > div > div,
+        div[data-baseweb="textarea"],
+        div[data-baseweb="select"] > div,
+        [data-baseweb="popover"] > div {
+            border: none !important;
             outline: none !important;
             box-shadow: none !important;
         }
