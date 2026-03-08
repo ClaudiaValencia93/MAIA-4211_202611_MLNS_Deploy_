@@ -1,12 +1,12 @@
 # Clasificador de textos de los Objetivos de Desarrollo Sostenible (ODS) 
 
 Aplicación web desarrollada como parte del curso de Machine Learning No Supervisado (MLNS) 
-de la Maestría en Inteligencia Artificial de la Universidad de los Andes.
+de la Maestría en Inteligencia Artificial de la Universidad de los Andes
 
 ## Descripción
 Herramienta basada en Machine Learning que clasifica automáticamente textos según los 
 17 Objetivos de Desarrollo Sostenible (ODS) de la ONU. Utiliza un modelo de Regresión 
-Logística con TF-IDF entrenado sobre textos en español, alcanzando un F1-Score de 85.83%.
+Logística con TF-IDF entrenado sobre textos en español, alcanzando un F1-Score de 85.83%
 
 ## Autores
 - Claudia Valencia Morales
