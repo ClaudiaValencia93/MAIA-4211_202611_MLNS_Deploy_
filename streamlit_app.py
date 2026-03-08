@@ -100,6 +100,20 @@ st.markdown("""
             background-color: #005a8e !important;
             border-color: #005a8e !important;
         }
+        /* Fondo principal */
+        .stApp {
+            background-color: #0E1117 !important;
+        }
+        
+        /* Fondo sidebar */
+        [data-testid="stSidebar"] {
+            background-color: #262730 !important;
+        }
+        
+        /* Fondo header */
+        [data-testid="stHeader"] {
+            background-color: #0E1117 !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
