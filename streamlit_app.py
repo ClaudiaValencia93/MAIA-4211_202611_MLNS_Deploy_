@@ -141,6 +141,17 @@ st.markdown("""
             color: #888888 !important;
             opacity: 1 !important;
         }
+        /* Fondo dropdown opciones */
+        ul[data-testid="stSelectboxVirtualDropdown"],
+        [data-baseweb="popover"] ul,
+        [data-baseweb="menu"] {
+            background-color: #262730 !important;
+            color: white !important;
+        }
+        [data-baseweb="menu"] li {
+            background-color: #262730 !important;
+            color: white !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
