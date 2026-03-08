@@ -414,7 +414,7 @@ with tab2:
                     for text, r in zip(lines, results)
                 ])
                 st.success(f"✔️ {len(df_results)} textos clasificados.")
-                st.dataframe(df_results, use_container_width=True,  hide_index=True)
+                st.dataframe(df_results) #use_container_width=True,  hide_index=True)
                 csv = df_results.to_csv(index=False).encode("utf-8")
                 st.download_button(
                     label="⬇️ Descargar resultados como CSV",
