@@ -446,7 +446,7 @@ with tab2:
 st.markdown("---")
 col_footer1, col_footer2 = st.columns([1, 4])
 with col_footer1:
-    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=120)
+    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=110)
 with col_footer2:
     st.markdown(
         "<div style='color:gray; font-size:1em; padding-top:15px; margin-left:-30px;'>"
