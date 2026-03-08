@@ -118,7 +118,10 @@ st.markdown("""
         [data-testid="stSidebar"] div {
             color: white !important;
         }
-        
+        /* Líneas separadoras sidebar */
+        [data-testid="stSidebar"] hr {
+            border-color: #555555 !important;
+        }
         /* Fondo header */
         [data-testid="stHeader"] {
             background-color: #0E1117 !important;
