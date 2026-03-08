@@ -180,16 +180,12 @@ st.markdown("""
             border-radius: 8px !important;
         }
         
-        /* Fondo tabla dataframe */
-        [data-testid="stDataFrame"],
-        [data-testid="stDataFrame"] * {
-            background-color: #0E1117 !important;
-            color: white !important;
-            
-        }
+        
         
     </style>
 """, unsafe_allow_html=True)
+
+
 
 # ─────────────────────────────────────────────
 # Carga del modelo cacheado para eficiencia
