@@ -390,8 +390,8 @@ with tab2:
             #     if not lines_validas:
             #         st.warning("⚠️ Por favor ingresa textos válidos para clasificar")
             else:
-                with st.spinner(f"Clasificando {len(lines_validas)} textos..."):
-                    results = controller.predict_batch(lines_validas)
+                with st.spinner(f"Clasificando {len(lines)} textos..."):
+                    results = controller.predict_batch(lines)
                 df_results = pd.DataFrame([
                     {
                         "Texto": text[:100] + "..." if len(text) > 100 else text,
@@ -399,7 +399,7 @@ with tab2:
                         "Nombre del ODS": r["ods_name"],
                         "Confianza (%)": round(max(r["probabilities"].values()) * 100, 2),
                     }
-                    for text, r in zip(lines_validas, results)
+                    for text, r in zip(lines, results)
                 ])
                 st.success(f"✔️ {len(df_results)} textos clasificados.")
                 st.dataframe(df_results, use_container_width=True)
