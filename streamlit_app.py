@@ -205,7 +205,7 @@ st.markdown("""
 
         /* Dropdown items hover */
         li[role="option"]:hover {
-            background-color: #0078B4 !important;
+            background-color:  #3a3b45 !important;
             color: white !important;
         }
 
