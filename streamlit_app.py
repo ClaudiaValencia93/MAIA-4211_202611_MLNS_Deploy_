@@ -196,12 +196,9 @@ st.markdown("""
             border: 1px solid #262730 !important;
             border-radius: 8px !important;
         }
-        
-        
+              
     </style>
 """, unsafe_allow_html=True)
-
-
 
 # ─────────────────────────────────────────────
 # Carga del modelo cacheado para eficiencia
@@ -449,10 +446,10 @@ with tab2:
 st.markdown("---")
 col_footer1, col_footer2 = st.columns([1, 4])
 with col_footer1:
-    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=100)
+    st.image(os.path.join(os.path.dirname(__file__), "img", "logo_uniandes.png"), width=120)
 with col_footer2:
     st.markdown(
-        "<div style='color:gray; font-size:0.85em; padding-top:15px; margin-left:-30px;'>"
+        "<div style='color:gray; font-size:1em; padding-top:15px; margin-left:-30px;'>"
         "Clasificador de textos de los ODS · Curso MLNS MAIA - Uniandes · Modelo: Regresión Logística + TF-IDF · F1-Score: 85.83%"
         "</div>",
         unsafe_allow_html=True,
